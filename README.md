@@ -1,5 +1,5 @@
 # End-to-end diarization loss
-This is the implement of PIT loss, FastPIT loss and OPTM loss for end-to-end diarization training. Acknowledge 
+This is the implement of PIT loss, FastPIT loss and OPTM loss for end-to-end diarization training. Acknowledge @tdedecko for the implement of Hungarian algorithm at https://github.com/tdedecko/hungarian-algorithm. 
 
 ### Prerequisites
 ```
@@ -31,7 +31,7 @@ print(assigned_label2)
 print(assigned_label3)
 ```
 
-## citation
+## Citation
 ```
 Q. Lin et al.: Optimal Mapping Loss: A Faster Loss for End-to-End Speaker Diarization, Odyssey 2020.
 ```
