@@ -1,14 +1,18 @@
 # End-to-end diarization loss
 This is the implement of PIT loss, FastPIT loss and OPTM loss for end-to-end diarization training. Acknowledge @tdedecko for the implement of Hungarian algorithm at https://github.com/tdedecko/hungarian-algorithm. 
 
+### 2021/07/22 update:
+Replace Hungurian.py with scipy.optimize.linear_sum_assignment to fix problems.
+
 ### Prerequisites
 ```
-Python >= 3.7
-Pytorch >= 1.3.1
-numpy >= 1.15.1
+Python
+Pytorch
+numpy
+scipy
 ```
 
-## Simple example:
+### Simple example:
 The loss directory is regarded as the python package. Usage:
 ```
 import torch

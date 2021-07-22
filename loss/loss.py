@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from itertools import permutations
-from .hungarian import Hungarian
+from scipy.optimize import linear_sum_assignment 
 
 
 # modified for padding cases
@@ -82,12 +82,10 @@ class OPTMLoss(BasicLoss):
         loss_mat = self.criterion(ext_pred, ext_label)
         loss_mat = loss_mat.mean(dim=0)
 
-        H = Hungarian()
-        H.calculate(loss_mat.detach().cpu().numpy())
-        mappings = H.get_results()
-        p = [col for row, col in sorted(mappings)]
-        loss = loss_mat[range(n_class), p].mean()
-        assigned_label = label[:, p]
+        # row_ind is sorted like: [0, 1, 2, 3, ...]
+        row_ind, col_ind = linear_sum_assignment(loss_mat.detach().cpu().numpy())
+        loss = loss_mat[row_ind, col_ind].mean()
+        assigned_label = label[:, col_ind]
         return loss, assigned_label
 
 
